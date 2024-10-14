@@ -88,6 +88,7 @@ function App() {
     <div className="main">
       <p className="score">Score: {score}</p>
       <p className="bestScore">Best Score: {bestScore}</p>
+      <div className="cards"></div>
     </div>
   );
 }

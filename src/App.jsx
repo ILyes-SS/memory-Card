@@ -1,50 +1,51 @@
 import { useState } from "react";
+import { Card } from "./card";
 import "./App.css";
 
 const cardsInfos = [
   {
-    title: "",
-    urlEndpoint: "",
+    title: "Side eye cat",
+    urlEndpoint: "wr7oA0rSjnWuiLJOY5",
     id: crypto.randomUUID(),
   },
   {
-    title: "",
-    urlEndpoint: "",
+    title: "Soldier cat",
+    urlEndpoint: "2zUn8hAwJwG4abiS0p",
     id: crypto.randomUUID(),
   },
   {
-    title: "",
-    urlEndpoint: "",
+    title: "Huh cat",
+    urlEndpoint: "GRk3GLfzduq1NtfGt5",
     id: crypto.randomUUID(),
   },
   {
-    title: "",
-    urlEndpoint: "",
+    title: "Vibes cat",
+    urlEndpoint: "GeimqsH0TLDt4tScGw",
     id: crypto.randomUUID(),
   },
   {
-    title: "",
-    urlEndpoint: "",
+    title: "dinner cat",
+    urlEndpoint: "iE4e5c8ExJUhdhvSiw",
     id: crypto.randomUUID(),
   },
   {
-    title: "",
-    urlEndpoint: "",
+    title: "Mewing cat",
+    urlEndpoint: "bLzSbiS3Lzkrwl6ENS",
     id: crypto.randomUUID(),
   },
   {
-    title: "",
-    urlEndpoint: "",
+    title: "Symfunny cat",
+    urlEndpoint: "meFHvwfX0GDpWiAlRx",
     id: crypto.randomUUID(),
   },
   {
-    title: "",
-    urlEndpoint: "",
+    title: "Typing cat",
+    urlEndpoint: "JIX9t2j0ZTN9S",
     id: crypto.randomUUID(),
   },
   {
-    title: "",
-    urlEndpoint: "",
+    title: "Sliding cat",
+    urlEndpoint: "W4iMEEOHdUEKMaf81Y",
     id: crypto.randomUUID(),
   },
 ];
@@ -57,9 +58,10 @@ function App() {
   function clickHandler(e) {
     if (clickedCards.includes(e.target.id)) {
       setScore(0);
+      setClickedCards([]);
     } else {
       setClickedCards((prev) => [...prev, e.target.id]);
-      setScore((prev) => ++prev);
+      setScore((prev) => prev + 1);
     }
     if (score > bestScore) {
       setBestScore(score);
@@ -88,7 +90,18 @@ function App() {
     <div className="main">
       <p className="score">Score: {score}</p>
       <p className="bestScore">Best Score: {bestScore}</p>
-      <div className="cards"></div>
+      <div className="cards">
+        {cardsInfos.map((card, index) => {
+          return (
+            <Card
+              endpoint={card.urlEndpoint}
+              title={card.title}
+              key={card.id}
+              onClick={clickHandler}
+            ></Card>
+          );
+        })}
+      </div>
     </div>
   );
 }

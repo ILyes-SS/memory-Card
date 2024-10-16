@@ -15,15 +15,14 @@ export function Card({ endpoint, title, onClick }) {
       })
       .then((data) => {
         imageSrc.current = data.data.images.original.url;
-      })
-      .catch((error) => console.error(error));
+      });
 
     return () => (ignore = true);
   }, [endpoint]);
 
   return (
     <div
-      style={{ backgroundColor: "red", margin: "10px" }}
+      style={{ backgroundColor: "red", margin: "100px" }}
       onClick={onClick}
       className="card"
       id={title.replaceAll(" ", "-")}

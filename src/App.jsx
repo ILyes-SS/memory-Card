@@ -56,11 +56,14 @@ function App() {
   const [clickedCards, setClickedCards] = useState([]);
 
   function clickHandler(e) {
-    if (clickedCards.includes(e.target.id)) {
+    if (clickedCards.includes(e.target.id || e.target.parentElement.id)) {
       setScore(0);
       setClickedCards([]);
     } else {
-      setClickedCards((prev) => [...prev, e.target.id]);
+      setClickedCards((prev) => [
+        ...prev,
+        e.target.id || e.target.parentElement.id,
+      ]);
       setScore((prev) => prev + 1);
     }
     if (score > bestScore) {

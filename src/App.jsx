@@ -87,7 +87,14 @@ function App() {
     setScore(0);
     setClickedCards([]);
   }
-
+  let randomArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i"];
+  function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+  shuffle(randomArray);
   return (
     <div className="main">
       <p className="score">Score: {score}</p>
@@ -100,6 +107,7 @@ function App() {
               title={card.title}
               key={card.id}
               onClick={clickHandler}
+              order={randomArray[index]}
             ></Card>
           );
         })}

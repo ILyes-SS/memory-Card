@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-export function Card({ endpoint, title, onClick }) {
+export function Card({ endpoint, title, onClick, order }) {
   let imageSrc = useRef(null);
 
   useEffect(() => {
@@ -22,7 +22,11 @@ export function Card({ endpoint, title, onClick }) {
 
   return (
     <div
-      style={{ backgroundColor: "red", margin: "100px" }}
+      style={{
+        backgroundColor: "red",
+        margin: "100px",
+        gridArea: `${order}`,
+      }}
       onClick={onClick}
       className="card"
       id={title.replaceAll(" ", "-")}

@@ -66,7 +66,7 @@ function App() {
       ]);
       setScore((prev) => prev + 1);
     }
-    if (score > bestScore) {
+    if (score >= bestScore) {
       setBestScore(score);
     }
   }
@@ -76,17 +76,16 @@ function App() {
     dialog.close();
   }
 
-  let dialog = (
-    <dialog open>
-      <p>You Win!!</p>
-      <button onClick={handleSubmit}>Play Again</button>
-    </dialog>
-  );
+  let dialog = document.querySelector("dialog");
+  let dialogBtn = document.querySelector("dialog button");
 
+  dialogBtn.addEventListener("click", handleSubmit);
   //winning
   if (score == 9) {
+    dialog.showModal();
+    setBestScore(9);
     setScore(0);
-    document.querySelector(".main").appendChild(dialog);
+    setClickedCards([]);
   }
 
   return (

@@ -97,6 +97,8 @@ function App() {
   shuffle(randomArray);
   return (
     <div className="main">
+      <h1 className="game">Memory Card Game</h1>
+      <p>Click each card once and do not forget it</p>
       <p className="score">Score: {score}</p>
       <p className="bestScore">Best Score: {bestScore}</p>
       <div className="cards">

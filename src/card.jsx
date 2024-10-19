@@ -1,7 +1,7 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function Card({ endpoint, title, onClick, order }) {
-  let imageSrc = useRef(null);
+  let [imageSrc, setImageSrc] = useState(null);
 
   useEffect(() => {
     let ignore = false;
@@ -14,7 +14,7 @@ export function Card({ endpoint, title, onClick, order }) {
         } else return response.json();
       })
       .then((data) => {
-        imageSrc.current = data.data.images.original.url;
+        setImageSrc(data.data.images.original.url);
       });
 
     return () => (ignore = true);
@@ -23,15 +23,13 @@ export function Card({ endpoint, title, onClick, order }) {
   return (
     <div
       style={{
-        backgroundColor: "red",
-        margin: "100px",
         gridArea: `${order}`,
       }}
       onClick={onClick}
       className="card"
       id={title.replaceAll(" ", "-")}
     >
-      <img src={imageSrc.current} alt="cat meme gif" />
+      <img src={imageSrc} alt="cat meme gif" />
       <p>{title}</p>
     </div>
   );

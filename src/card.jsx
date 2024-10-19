@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 export function Card({ endpoint, title, onClick, order }) {
   let [imageSrc, setImageSrc] = useState(null);
